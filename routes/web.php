@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
@@ -17,41 +18,41 @@ use Symfony\Component\HttpKernel\Attribute\Cache as AttributeCache;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
 
-    // echo "Hello, Dan";  
- //   dump("hello world!!!");
-    //dd("hello world!!!");
-    //dump(config("database.connections.mysql"));
-    // dump(config("custom.custom_test"));
+//     // echo "Hello, Dan";  
+//  //   dump("hello world!!!");
+//     //dd("hello world!!!");
+//     //dump(config("database.connections.mysql"));
+//     // dump(config("custom.custom_test"));
 
-    /**  @var \Illuminate\Cache\CacheManager $cache  */
+//     /**  @var \Illuminate\Cache\CacheManager $cache  */
 
-    // $cache = app()->make("cache");  // получение при помощи ServiceContainer
-    // $cache->put('test', 555);
-    // $cache = app('cache'); 
-    // $cache = cache(); //получение при помощи Helpers
+//     // $cache = app()->make("cache");  // получение при помощи ServiceContainer
+//     // $cache->put('test', 555);
+//     // $cache = app('cache'); 
+//     // $cache = cache(); //получение при помощи Helpers
         
     
-  //  dd($cache->get('test', 'default')); 
+//   //  dd($cache->get('test', 'default')); 
 
 
-//   dd(Cache::get('tests', 444)); //получение при помощи Facade
-  //  $cache = App::make('cache');
-  //  dd($cache->get('test'));
+// //   dd(Cache::get('tests', 444)); //получение при помощи Facade
+//   //  $cache = App::make('cache');
+//   //  dd($cache->get('test'));
 
-    return view('welcome');
-});
+//     return view('welcome');
+// });
 
 
 // Route::get('/posts', function(){
 //    return '<h1>Post Page</h1>';
 // });
 
-Route::get('/', function(){
+// Route::get('/', function(){
 
-      return view('test.main', ['title'=>'main page', 'desc'=>'description']);
-});
+//       return view('test.main', ['title'=>'main page', 'desc'=>'description']);
+// });
 
 //Route::view('/', 'test.main', ['title'=>'Main page', 'desc'=>'description ...']);
 
@@ -80,41 +81,81 @@ Route::get('/', function(){
 
 // })->where(['id'=>'[0-9]+']);
 
-Route::get('/posts', function(){
-     return "Posts Page";
-});
 
-Route::get('/posts/{id?}', function($id){
-   return "Posts ID: {$id}";
-})->where(['id'=>'[0-9]+']);
+//-------------------------routing part1-------//
 
-Route::get('/posts/contact', function(){
+// Route::get('/posts', function(){
+//      return "Posts Page";
+// });
 
-         return "posts contact";
-});
+// Route::get('/posts/{id?}', function($id = 1){
+//    return "Posts ID: {$id}";
+// })->where(['id'=>'[0-9]+']);
+
+// Route::get('/posts/contact', function(){
+
+//          return "posts contact";
+// });
 
 // Route::get('/posts/{slug}', function($slug){
 //    return "Posts slug: $slug";
 // });
 
-Route::get('/search/{search}', function($findW){
+// Route::get('/search/{search}', function($findW){
 
-return "We found word : $findW";
-})->where(['search'=>'.*']);
+//    return "We found word : $findW";
+// })->where(['search'=>'.*']);
 
-Route::post('posts', function(){
-   return "Store Post!!!";
-})->withoutMiddleware(VerifyCsrfToken::class);
+// Route::post('posts', function(){
+//    return "Store Post!!!";
+// })->withoutMiddleware(VerifyCsrfToken::class);
 
-Route::match(['get', 'post'], '/diff-method', function(){
-      return "Hello from get|post method";
-})->withoutMiddleware(VerifyCsrfToken::class);
+// Route::match(['get', 'post'], '/diff-method', function(){
+//       return "Hello from get|post method";
+// })->withoutMiddleware(VerifyCsrfToken::class);
 
-Route::any('/diff-method', function(){
+// Route::any('/diff-method', function(){
 
-   return "Hello from ANY methods";
+//    return "Hello from ANY methods";
 
 
-})->withoutMiddleware(VerifyCsrfToken::class);
+// })->withoutMiddleware(VerifyCsrfToken::class);
 
-Route::redirect('/here', 'diff-method', 301);
+// Route::redirect('/here', 'diff-method', 301);
+
+
+//-------------------------routing part2-------//
+
+//Route::get('/', [MainController::class, 'index']);
+
+Route::prefix('admin')->group(function(){
+
+
+      Route::get('/', function(){
+         return 'Welcome Admin page!';
+      });
+
+      Route::get('/posts', function(){
+         return 'Admin posts page';
+      });
+
+      Route::get('/posts/{id}', function($id){
+            return 'Admin post ID:'. $id;
+      })->where(['id'=>'[0-9]+']);
+
+
+
+});
+
+// Route::fallback(function(){
+   
+
+//     abort(404,'Page not found?!');
+//   // return response()->json(['answer'=>'Page not found'], 404);
+//  //  return response('Page not found', 404);
+//    //return 'Error 404 page not found!!!';
+// });
+
+
+
+
