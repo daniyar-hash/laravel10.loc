@@ -93,9 +93,9 @@ Route::get('/posts/contact', function(){
          return "posts contact";
 });
 
-Route::get('/posts/{slug}', function($slug){
-   return "Posts slug: $slug";
-});
+// Route::get('/posts/{slug}', function($slug){
+//    return "Posts slug: $slug";
+// });
 
 Route::get('/search/{search}', function($findW){
 
