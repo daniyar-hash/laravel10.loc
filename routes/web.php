@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
@@ -128,24 +132,24 @@ use Symfony\Component\HttpKernel\Attribute\Cache as AttributeCache;
 
 //Route::get('/', [MainController::class, 'index']);
 
-Route::prefix('admin')->group(function(){
+// Route::prefix('admin')->group(function(){
 
 
-      Route::get('/', function(){
-         return 'Welcome Admin page!';
-      });
+//       Route::get('/', function(){
+//          return 'Welcome Admin page!';
+//       });
 
-      Route::get('/posts', function(){
-         return 'Admin posts page';
-      });
+//       Route::get('/posts', function(){
+//          return 'Admin posts page';
+//       });
 
-      Route::get('/posts/{id}', function($id){
-            return 'Admin post ID:'. $id;
-      })->where(['id'=>'[0-9]+']);
+//       Route::get('/posts/{id}', function($id){
+//             return 'Admin post ID:'. $id;
+//       })->where(['id'=>'[0-9]+']);
 
 
 
-});
+// });
 
 // Route::fallback(function(){
    
@@ -156,6 +160,29 @@ Route::prefix('admin')->group(function(){
 //    //return 'Error 404 page not found!!!';
 // });
 
+// Route::get('/', [HomeController::class, 'index']);
+// Route::get('/test', [HomeController::class, 'test']);
+// Route::get('/single', TestController::class);
 
 
+// Route::prefix('admin')->name('admin.')->group(function(){
+
+
+// Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+// Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+// Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store')->withoutMiddleware(VerifyCsrfToken::class);
+// Route::get('/admin/products/{product_id}', [ProductController::class, 'show'])->name('admin.products.show')->where(['product_id'=>'[0-9]+']);
+// Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+// Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update')->withoutMiddleware(VerifyCsrfToken::class);
+// Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy')->withoutMiddleware(VerifyCsrfToken::class);
+
+
+// });
+
+// Route::resource('/users', UserController::class);
+
+//**************lesson Views*************/
+Route::get('/',[HomeController::class, 'index'])->name('greeting.index');
+Route::get('/test',[HomeController::class, 'test'])->name('greeting.test');
+Route::get('/contact',[HomeController::class, 'contact'])->name('greeting.contact');
 
