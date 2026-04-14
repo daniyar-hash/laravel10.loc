@@ -14,8 +14,13 @@ class HomeController extends Controller
         {
 
 
+        $users = json_decode(file_get_contents('https://jsonplaceholder.typicode.com/users'), true);
+        // dump($users);
 
-          return view('greeting.index', ['title'=>'Page Home','desc'=>'test desc', 'test'=>'test value']);
+        return view('greeting.index', compact('users'));
+
+
+          // return view('greeting.index', ['title'=>'Page Home','desc'=>'test desc', 'test'=>'test value']);
 
             // if(!FacadesView::exists('greeting.index')){
             //     abort(404);
