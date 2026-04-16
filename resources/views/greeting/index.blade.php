@@ -74,7 +74,7 @@
 @endsection
 
 {{-- @section('title', 'Test title from View') --}}
-@section('title', $title ?? 'Test title ccc')
+@section('title', $title ?? 'Test title')
 
 @section('desc')
 <meta name="description" content="Description from View">

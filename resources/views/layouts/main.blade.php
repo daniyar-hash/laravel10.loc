@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"> -->
     {{--<title>{{$site_title}}: {{$title}}</title> --}}
     <title>@yield('title', 'Default title')</title>
+    {{-- <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('main.css')}}"> --}}
+
+     @vite(['resources/css/main.css', 'resources/bootstrap/bootstrap.css', 
+                'resources/bootstrap/bootstrap.bundle.js'])
+   
+
 {{--@isset($desc)
 
 <meta name="description" content="{{$desc}}">
@@ -44,13 +51,15 @@
 
 @show
 
+<div class="img-2" style="width:300px; height:400px;"></div>
+<!-- <img class="img-2" alt="Ocean" width="300" height="400"> -->
 <div class="container mt-3">
      @yield('content')
 </div>
 
-@include('layouts.incs.footer',['test'=>'Test value from layout']);// переопределяем переменную test
+@include('layouts.incs.footer',['test'=>'Test value from layout']);{{-- переопределяем переменную test --}}
 
-  
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="{{asset('bootstrap/bootstrap.bundle.js') }}"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>

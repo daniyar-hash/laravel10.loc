@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Composers\ProfileComposer;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+
+    
 
        FacadesView::share('site_title','Title Page');
 
