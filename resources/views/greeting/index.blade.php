@@ -5,22 +5,22 @@
 
  <h1>Home Page</h1>
 
- <!-- @isset($users)
+ {{-- @isset($users)
 
  @foreach($users as $user)
     {{$user['name']}} <br>
  @endforeach
 
- @endisset -->
+ @endisset
 
- <!-- @if(!empty($users))
+ @if(!empty($users))
 
  @foreach($users as $user)
     {{$user['email']}} <br>
  @endforeach
 
- @endif -->
-<!-- 
+ @endif 
+
  @for($i=1; $i<=12; $i++)
 
  @if($i==2)
@@ -33,13 +33,13 @@
  @if($i==9)
  @break
  @endif
- @endfor -->
+ @endfor 
 
- <!-- @foreach($users as $user)
+ @foreach($users as $user)
    {{$loop->iteration}}: {{$user['email']}} <br>
- @endforeach -->
+ @endforeach 
 
-<!-- @php
+ @php
 
 
  $users2 = [];
@@ -50,23 +50,20 @@
 {{$user['name']}} <br>
 
 @empty
-<p>No users!</p> -->
+<p>No users!</p> 
 
-<!-- @endforelse -->
+ @endforelse 
 
 
+--}}
 
 @foreach($users as $user)
 
 
-<span @class(['text-danger'=>$loop->odd])>{{$loop->iteration}}.{{$user['name']}}</span><br>
+ <span @class(['text-danger'=>$loop->odd])>{{$user->id}}.{{$user->name}} - {{$user->email}}</span><br>
 
 
-@endforeach
-
-
-
-
+@endforeach 
 
 
 

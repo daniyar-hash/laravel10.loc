@@ -6,11 +6,11 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"> -->
     {{--<title>{{$site_title}}: {{$title}}</title> --}}
     <title>@yield('title', 'Default title')</title>
-    {{-- <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{ asset('main.css')}}"> --}}
+   <link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/main.css')}}">
 
-     @vite(['resources/css/main.css', 'resources/bootstrap/bootstrap.css', 
-                'resources/bootstrap/bootstrap.bundle.js'])
+     {{--  @vite(['resources/css/main.css', 'resources/bootstrap/bootstrap.css', 
+                'resources/bootstrap/bootstrap.bundle.js']) --}}
    
 
 {{--@isset($desc)
@@ -51,7 +51,7 @@
 
 @show
 
-<div class="img-2" style="width:300px; height:400px;"></div>
+
 <!-- <img class="img-2" alt="Ocean" width="300" height="400"> -->
 <div class="container mt-3">
      @yield('content')
