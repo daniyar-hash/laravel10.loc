@@ -96,22 +96,72 @@ class HomeController extends Controller
             // ->get();
 
             // $count = DB::table('city')->count();
-           $max_pop = DB::table('city')->max('Population');
-            // $min_pop = DB::table('city')->min('Population');
-            dump($max_pop);
+            //  $max_pop = DB::table('city')->max('Population');
+          //   // $min_pop = DB::table('city')->min('Population');
+          //   dump($max_pop);
 
-            $cities = DB::table('city')
-            ->orderBy('Population', 'desc')
-            ->first('Population');
-            dump($cities->Population);
+          //   $cities = DB::table('city')
+          //   ->orderBy('Population', 'desc')
+          //   ->first('Population');
+          //   dump($cities->Population);
+
+          //$cities = DB::table('city')->select('id', 'Name', 'CountryCode' )->whereIn('ID', [2,4,6])->get();
+          //  $cities = DB::table('city')->where('Name', 'Like', 'amb%')->get();
+        //  $users = DB::table('users')->whereDate('created_at', '>', '2026-04-22')->get();
+
+          // $cities = DB::table('city')
+          // ->select('city.ID', 'city.Name', 'city.CountryCode', 'country.Name as c_n')
+          // ->leftJoin('country', 'city.CountryCode', '=', 'country.Code')
+          // ->limit(10)
+          // ->offset(10)
+          // ->get();
+          // dump($cities);
 
 
-  
+ // ONLY_FULL_GROUP_BY
+          // dump(DB::select('select @@sql_mode'));
+          //DB::statement("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'");
+          // config()->set('database.connections.mysql.strict', false);
+          // DB::reconnect();
+          // // dump(DB::select('select @@sql_mode'));
+          //  $cities = DB::table('city')
+          // ->selectRaw('sum(Population) as s_p, CountryCode, Name')
+          // ->groupBy('CountryCode')
+          // ->having('s_p', '>', 50000000)
+          // ->get();
 
          
+     
+          // config()->set('database.connections.mysql.strict', true);
+          // DB::reconnect();
       
-      
-      
+          // dump($cities);
+
+          // dump(DB::table('users')->insertOrIgnore([
+          //   [
+          //   'Name' =>'Igorr 2',
+          //   'Password' =>122,
+          //   'email' =>'igeor2@mail.com'
+          //   ],
+          //      [
+          //   'Name' =>'Elena',
+          //   'Password' =>121,
+          //   'email' =>'el@mail.com'
+          //   ]
+                   
+          
+          // ]));
+
+          // dump(DB::table('users')->insertGetId(
+          //   [ 'email' =>'test@mail.com', 'Name' =>'west','Password' =>3334]
+          //   ));
+
+       //   dump(DB::table('users')->where('id', '=', 6)->update(['Name' =>'Orio', 'email' =>'orio@mail.com']));
+        //  dump(DB::table('users')->updateOrInsert(['email' =>'oriro@mail.com'],['Name' =>'Qween','Password' =>432]));
+
+          // dump(DB::table('users')->where('id', '=', 6)->delete());
+
+          
           return view('greeting.index', compact('users'));
 
 
