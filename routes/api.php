@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::get('countries', function(){
+
+      return Country::query()
+            ->where('Population', '>', 120_000_000)
+            ->orderBy('Population', 'desc')
+            ->limit(4)
+            ->get(['Code', 'Name', 'Population']);
+
+
 });

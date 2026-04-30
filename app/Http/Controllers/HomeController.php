@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
+use App\Models\Language;
+use App\Models\Post;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View as FacadesView;
@@ -13,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
 
-        public function index():View
+        public function index()
         {
 
 
@@ -161,7 +164,33 @@ class HomeController extends Controller
 
           // dump(DB::table('users')->where('id', '=', 6)->delete());
 
-          
+          // $posts = Post::all()->toArray();
+          // $post = Post::query()->find(2, ['id','title', 'content'])->toArray();
+         //   $post = Post::query()->first()->toArray();
+          // dump($posts);
+          // dump($post);
+
+        //  $countries = Country::all(['Code', 'Name', 'Population'])->toArray();
+
+            // $countries = Country::query()
+            // ->where('Population', '>', 120_000_000)
+            // ->orderBy('Population', 'desc')
+            // ->limit(4)
+            // ->get(['Code', 'Name', 'Population']);
+
+          // $countries = Country::query()->first();
+             $countries = Country::query()->find('AFG');
+               
+         dump($countries->toArray());
+         dump($countries->Name);
+
+//         $lang = Language::query()->first();
+//         dump($lang->toArray());
+//         dump($lang->id);
+//  dump($lang->title);
+         // return $countries->toJson();
+       //  return response()->json($countries);
+
           return view('greeting.index', compact('users'));
 
 
