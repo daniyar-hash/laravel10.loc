@@ -13,5 +13,7 @@ class Country extends Model
 
     protected $primaryKey = 'Code';
 
-     public $incrementing = false;
+    public $incrementing = false;
+
+    // protected $hidden = ['Continent', 'IndepYear'];
 }

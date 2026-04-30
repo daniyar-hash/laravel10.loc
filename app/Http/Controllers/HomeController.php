@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Language;
 use App\Models\Post;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\View\View;
@@ -103,10 +104,11 @@ class HomeController extends Controller
           //   // $min_pop = DB::table('city')->min('Population');
           //   dump($max_pop);
 
-          //   $cities = DB::table('city')
-          //   ->orderBy('Population', 'desc')
-          //   ->first('Population');
-          //   dump($cities->Population);
+            // $cities = DB::table('city')
+            // ->orderBy('Population', 'desc')
+            // ->first('Population');
+            // dump($cities->Population);
+            // dump(DB::table('city')->find('1024'));
 
           //$cities = DB::table('city')->select('id', 'Name', 'CountryCode' )->whereIn('ID', [2,4,6])->get();
           //  $cities = DB::table('city')->where('Name', 'Like', 'amb%')->get();
@@ -178,11 +180,12 @@ class HomeController extends Controller
             // ->limit(4)
             // ->get(['Code', 'Name', 'Population']);
 
-          // $countries = Country::query()->first();
-             $countries = Country::query()->find('AFG');
+        //   $country = Country::query()->first();
+          //$country = Country::query()->find('AFG');
                
-         dump($countries->toArray());
-         dump($countries->Name);
+        //  dump($country->toArray());
+        //   dump($country);
+        //  dump($countries->Name);
 
 //         $lang = Language::query()->first();
 //         dump($lang->toArray());
@@ -190,6 +193,51 @@ class HomeController extends Controller
 //  dump($lang->title);
          // return $countries->toJson();
        //  return response()->json($countries);
+
+       //-----------------------------------
+
+
+      //  dump('Count:' . Country::query()->count());
+      //  dump('Count:' . Country::query()->where('Population', '>', 1_100_100)->count());
+      //  dump('Max:' . Country::query()->max('Population'));
+      //  dump('Min:' . Country::query()->min('Population')); 
+      //  dump('Avg:' . Country::query()->avg('Population'));
+
+      //  $country = Country::query()->find('AFG2');
+      //  if(!$country){
+      //   abort(404);
+      //  }
+
+
+      //  $country = Country::query()->findOrFail('AFG2');
+      //  dump($country);
+
+
+      // $post = new Post();
+      // $post->title = 'Post 8';
+      // $post->slug = 'Post 8 slug';
+      // $post->content = 'Post 8 content';
+      // $post->category_id = rand(1,3);
+      // dump($post->save());
+      // dump($post->id);
+
+
+    //   $data = [
+    //     'title'=>'Post 11',
+    //     'slug' =>'post-191',
+    //     'content' =>'Post 11 content',
+    //     'status' =>0,
+    //     'category_id' => rand(1,3)
+    //   ];
+
+    //  dump(Post::query()->create($data));
+
+    // $post = Post::query()->find(18);
+    // dump($post->delete());
+    dump(Post::destroy(13,15));
+
+
+
 
           return view('greeting.index', compact('users'));
 
@@ -211,6 +259,42 @@ class HomeController extends Controller
         //     'name'=>'Oleg',
         //     'age'=>42
         //   ]);
+
+        }
+
+        public function store(Request $request)
+        {
+            var_dump($request->all());
+            var_dump($request->content);
+            Post::query()->create($request->all());
+            return $request->all();
+           
+        }
+
+
+        public function update(Request $request)
+        {
+
+          // $post = Post::query()->find($request->id);
+          // $post->title = $request->title;
+          // $post->content = $request->content;
+          // $post->category_id = $request->category_id;
+          // $post->save();
+
+
+          // $post = Post::query()->findOrFail($request->id);
+          // $post->update($request->all());
+
+          Post::query()->where('id', '=', $request->id)
+          ->update($request->all());
+
+
+
+
+
+          return 'Ok';
+
+
 
         }
 

@@ -186,3 +186,6 @@ Route::get('/',[HomeController::class, 'index'])->name('greeting.index');
 Route::get('/test',[HomeController::class, 'test'])->name('greeting.test');
 Route::get('/contact',[HomeController::class, 'contact'])->name('greeting.contact');
 
+Route::post('/store', [HomeController::class, 'store'])->withoutMiddleware(VerifyCsrfToken::class);
+
+Route::post('/update', [HomeController::class, 'update'])->withoutMiddleware(VerifyCsrfToken::class);

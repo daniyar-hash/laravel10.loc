@@ -11,4 +11,8 @@ class Post extends Model
 
 
     use HasFactory;
+
+   protected $fillable = ['title', 'slug', 'content', 'category_id', 'status'];
+
+   protected $guarded = [];
 }
