@@ -15,4 +15,11 @@ class Post extends Model
    protected $fillable = ['title', 'slug', 'content', 'category_id', 'status'];
 
    protected $guarded = [];
+
+
+
+   public function isPublished()
+   {
+            return $this->status ? 'Published' : 'Not published';
+   }
 }

@@ -234,12 +234,67 @@ class HomeController extends Controller
 
     // $post = Post::query()->find(18);
     // dump($post->delete());
-    dump(Post::destroy(13,15));
+    // dump(Post::destroy(13,15));
+//------------------------------------------------
+
+$post1 = Post::query()->get();  //  ORM
+dump($post1);
+
+$post2 = DB::table('posts')->get(); // Query builder
+dump($post2);
+
+$post3 = DB::select('select * from posts'); // native sql
+dump($post3);
+
+
+// $data = [1,2,3,4,5];
+// dump(collect($data));
+
+// $products = [
+//   ['title' => 'product 1', 'price' =>10],
+//   ['title' => 'product 2', 'price' =>15],
+//   ['title' => 'product 3', 'price' =>10],
+//   ['title' => 'product 4', 'price' =>12],
+//   ['title' => 'product 5', 'price' =>20],
+  
+// ];
+
+//  $products = collect($products);
+// dump($products->toArray());
+
+//dump($products->chunk(3)->toArray());
+
+// dump($products->avg('price'));
+// dump($products->sum('price'));
+// dump($products->min('price'));
+// dump($products->max('price'));
+// dump($products->count());
+
+// $filtered = $products->filter(function ($value, $key) {
+
+//      return $value['price'] > 10;
+// });
+
+// dump($filtered);
+
+//$countries = Country::query()->limit(10)->get(['Name', 'Continent', 'Population']);
+// dump($countries->toArray());
+
+// $filtered = $countries->filter(function($value, $key){
+//         return $value['Population'] > 1_000_000;
+// });
+
+// dump($filtered->toArray());
+// dump($countries->max('Population'));
+// dump($countries->min('Population'));
+// dump(
+//   $countries->countBy(function(Country $country){
+//     return $country->Continent;
+//   }));
 
 
 
-
-          return view('greeting.index', compact('users'));
+          return view('greeting.index', compact('post1','post2', 'post3'));
 
 
           // return view('greeting.index', ['title'=>'Page Home','desc'=>'test desc', 'test'=>'test value']);

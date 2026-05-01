@@ -5,6 +5,49 @@
 
  <h1>Home Page</h1>
 
+ @php
+ /**
+ *  @var \Illuminate\Support\Collection $products
+   @var \App\Models\Post $post
+ */
+
+ @endphp
+{{--
+@foreach($products->chunk(3) as $chunk)
+ <div class="row my-3">
+   @foreach($chunk as $product)
+ <div class="col-md-4">
+      {{$product['title']}}
+ </div>
+@endforeach
+ </div>
+@endforeach
+
+--}}
+
+
+ @foreach($post1 as $post)
+ 
+      {{$post->title}} | {{$post->isPublished()}} <br>
+
+@endforeach
+<hr>
+ @foreach($post2 as $post)
+ 
+      {{$post->title}} | {{$post->status ? 'published' : 'Not published'}} <br>
+
+@endforeach
+<hr>
+ @foreach($post3 as $post)
+ 
+   {{$post->title}} | {{$post->status ? 'published' : 'Not published'}} <br>
+
+
+@endforeach
+<hr>
+
+
+
  {{-- @isset($users)
 
  @foreach($users as $user)
@@ -55,7 +98,7 @@
  @endforelse 
 
 
---}}
+
 
 @foreach($users as $user)
 
@@ -67,7 +110,7 @@
 
 
 
-
+--}}
 @endsection
 
 {{-- @section('title', 'Test title from View') --}}
