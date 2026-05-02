@@ -189,3 +189,5 @@ Route::get('/contact',[HomeController::class, 'contact'])->name('greeting.contac
 Route::post('/store', [HomeController::class, 'store'])->withoutMiddleware(VerifyCsrfToken::class);
 
 Route::post('/update', [HomeController::class, 'update'])->withoutMiddleware(VerifyCsrfToken::class);
+
+Route::get('/category', [HomeController::class, 'store']);

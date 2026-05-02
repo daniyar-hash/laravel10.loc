@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Country;
 use App\Models\Language;
 use App\Models\Post;
@@ -234,7 +235,7 @@ class HomeController extends Controller
 
     // $post = Post::query()->find(18);
     // dump($post->delete());
-    // dump(Post::destroy(13,15));
+     dump(Post::destroy(10,12,16));
 //------------------------------------------------
 
 $post1 = Post::query()->get();  //  ORM
@@ -319,10 +320,27 @@ dump($post3);
 
         public function store(Request $request)
         {
-            var_dump($request->all());
-            var_dump($request->content);
-            Post::query()->create($request->all());
-            return $request->all();
+            // var_dump($request->all());
+            // var_dump($request->content);
+
+          // $data = [
+          //         ['title' => 'Category 1', 'slug' =>'Category-1'],
+          //         ['title' => 'Category 2', 'slug' =>'Category-2'],
+          //         ['title' => 'Category 3', 'slug' =>'Category-3'],
+          //         ['title' => 'Category 4', 'slug' =>'Category-4'],
+          //         ['title' => 'Category 5', 'slug' =>'Category-5']
+                
+          //       ];
+
+          //       foreach($data as $val){
+          //             Category::query()->create($val);
+          //       };
+
+      //      Category::query()->create($request->all());
+                       
+                        return 'ok';
+
+            // return $request->all();
            
         }
 
