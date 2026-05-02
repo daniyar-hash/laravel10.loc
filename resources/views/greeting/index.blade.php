@@ -23,7 +23,7 @@
  </div>
 @endforeach
 
---}}
+
 
 
  @foreach($post1 as $post)
@@ -47,7 +47,7 @@
 <hr>
 
 
-
+--}}
  {{-- @isset($users)
 
  @foreach($users as $user)

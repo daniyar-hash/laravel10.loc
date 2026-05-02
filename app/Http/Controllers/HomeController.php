@@ -235,17 +235,17 @@ class HomeController extends Controller
 
     // $post = Post::query()->find(18);
     // dump($post->delete());
-     dump(Post::destroy(10,12,16));
+    //  dump(Post::destroy(10,12,16));
 //------------------------------------------------
 
-$post1 = Post::query()->get();  //  ORM
-dump($post1);
+// $post1 = Post::query()->get();  //  ORM
+// dump($post1);
 
-$post2 = DB::table('posts')->get(); // Query builder
-dump($post2);
+// $post2 = DB::table('posts')->get(); // Query builder
+// dump($post2);
 
-$post3 = DB::select('select * from posts'); // native sql
-dump($post3);
+// $post3 = DB::select('select * from posts'); // native sql
+// dump($post3);
 
 
 // $data = [1,2,3,4,5];
@@ -293,9 +293,26 @@ dump($post3);
 //     return $country->Continent;
 //   }));
 
+//--------------------прямая связь-----------
+
+$category = Category::query()->find(2);
+dump($category->toArray());
+
+$post = $category->post; //обращаемся к анонимноу свойству getPost
+ dump($post->toArray());
+// // $post = Post::query()->where('category_id', '=', 4)->first();
+//  dump($post->toArray());
+
+//-------обратная связь
+// $post = Post::query()->find(3);
+// dump($post->toArray());
+
+// $category = $post->category;
+// dump($category->title);
 
 
-          return view('greeting.index', compact('post1','post2', 'post3'));
+
+          return view('greeting.index');
 
 
           // return view('greeting.index', ['title'=>'Page Home','desc'=>'test desc', 'test'=>'test value']);
