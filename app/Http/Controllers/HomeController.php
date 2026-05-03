@@ -8,12 +8,14 @@ use App\Models\Country;
 use App\Models\Language;
 use App\Models\Post;
 use Exception;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\View\View;
 use Illuminate\Support\Js;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,7 @@ class HomeController extends Controller
 
         // $users = json_decode(file_get_contents('https://jsonplaceholder.typicode.com/users'), true);
         // // dump($users);
-        $users = [];
+        // $users = [];
         // $data = [
         //   'name' => 'Gena Fisher',
         //   'id' =>1
@@ -295,11 +297,11 @@ class HomeController extends Controller
 
 //--------------------прямая связь-----------
 
-$category = Category::query()->find(2);
-dump($category->toArray());
+// $category = Category::query()->find(2);
+// dump($category->toArray());
 
-$post = $category->post; //обращаемся к анонимноу свойству getPost
- dump($post->toArray());
+// $post = $category->post; //обращаемся к анонимноу свойству getPost
+//  dump($post->toArray());
 // // $post = Post::query()->where('category_id', '=', 4)->first();
 //  dump($post->toArray());
 
@@ -309,6 +311,55 @@ $post = $category->post; //обращаемся к анонимноу свойс
 
 // $category = $post->category;
 // dump($category->title);
+//------one-to-many------------
+
+// $category = Category::query()->find(1);
+// dump($category);
+
+// $posts = $category->posts;
+// dump($posts);
+
+// $post = Post::query()->find(1);
+// dump($post->toArray());
+// $category = $post->category->toArray();
+// dump($category);
+
+// $categories = Category::all();
+// $categories = Category::with('posts')->get();
+// $categories = Category::query()->withCount('posts')->get();
+// dump($categories);
+
+// foreach($categories as $category){
+
+//   echo  "$category->title  ($category->posts_count)" .'<br>';
+
+// }
+// foreach($categories as $category){
+
+//   echo $category->title . '<br>';
+
+//   foreach($category->posts as $post){
+//     echo $post->title . '<br>';
+//   }
+
+//   echo '<hr>';
+
+
+// }
+
+/**
+ * @var \App\Models\Category $category
+ 
+
+ */
+$category = Category::query()->find(1);
+//  dump($category->posts()->where('id', '<>', 4)->orderBy('id', 'desc')->limit(1)->get()->toArray());
+//dump($category->posts->where('id', '<>', 4)->toArray());
+$category->posts();
+
+
+
+
 
 
 
