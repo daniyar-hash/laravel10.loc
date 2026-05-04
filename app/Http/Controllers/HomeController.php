@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\Language;
 use App\Models\Post;
+use App\Models\Tag;
 use Exception;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\Request;
@@ -352,11 +353,40 @@ class HomeController extends Controller
  
 
  */
-$category = Category::query()->find(1);
-//  dump($category->posts()->where('id', '<>', 4)->orderBy('id', 'desc')->limit(1)->get()->toArray());
-//dump($category->posts->where('id', '<>', 4)->toArray());
-$category->posts();
+// $category = Category::query()->find(1);
+// //  dump($category->posts()->where('id', '<>', 4)->orderBy('id', 'desc')->limit(1)->get()->toArray());
+// //dump($category->posts->where('id', '<>', 4)->toArray());
+// $category->posts();
 
+// $post = Post::query()->find(1);
+// $tags = $post->tags;
+
+// foreach($tags as $tag){
+//   echo "{$tag->title} | {$tag->ts->created_at} <br>";
+// }
+// dump($tags);
+
+// $tag = Tag::query()->find(3);
+// dump($tag->posts);
+
+
+//$posts = Post::with('tags')->get(); //жадная загрузка данных
+//$potst = Post::all(); //ленивая загрузка данных
+
+// foreach($posts as $post){
+//   echo "{$post->title} <br>";
+//   foreach($post->tags as $tag){
+//     echo "{$tag->title} <br>";
+//   }
+
+//   echo "<hr>";
+// }
+
+
+$category = Category::query()->find(1);
+//dump($category->latestPost);
+//dump($category->oldestPost);
+dump($category->latestActivePost);
 
 
 
