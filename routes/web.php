@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -191,3 +192,9 @@ Route::post('/store', [HomeController::class, 'store'])->withoutMiddleware(Verif
 Route::post('/update', [HomeController::class, 'update'])->withoutMiddleware(VerifyCsrfToken::class);
 
 Route::get('/category', [HomeController::class, 'store']);
+
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+
+

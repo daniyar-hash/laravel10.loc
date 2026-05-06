@@ -114,6 +114,8 @@
 @endsection
 
 {{-- @section('title', 'Test title from View') --}}
+
+
 @section('title', $title ?? 'Test title')
 
 @section('desc')
